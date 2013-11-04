@@ -1,5 +1,5 @@
 .DS_Store
-build-temp/
+build-tmp/
 *.sublime-workspace
 *.sublime-project
 *.pdf
