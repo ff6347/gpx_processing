@@ -16,6 +16,15 @@ Boolean writepdf = false; // if true the sketch will create a PDF
 // float northlat = 90; // the most top point
 // float southlat = -90; // the most bottom point
 // float eastlon = -180; // the most right point
+
+/**
+ * This is Berlin Potsdam boundng box
+ *
+ */
+// float westlon = 12.9638671875; // the most left point
+// float northlat = 52.70468296296834; // the most top point
+// float southlat = 52.338695481504814; // the most bottom point
+// float eastlon = 13.8153076171875; // the most right point
 /**
  * This is Potsdam bounding box
  * 
@@ -73,11 +82,14 @@ void setup() {
     XML child = trkseg.getChild(i);// get every child of trkseg
     String name = child.getName();
     if (name.equals("trkpt")) {
+      float aspectRatio = (eastlon - westlon) / (northlat - southlat);
+
       float lat = child.getFloat("lat");  // xml attribute lat
       float lon = child.getFloat("lon"); // // xml attribute lon
       // println(lat+" "+lon);
-       float x = width * ((westlon - lon) / (westlon - eastlon));
-       float y = ( height * ((northlat - lat)/(northlat - southlat)));
+      float x = map(lon, westlon, eastlon, 0, width);    // bereich der gps koodinaten auf den fensterbereich mappen
+      float y = map(lat, northlat, southlat, 0, width/aspectRatio);
+
       vertex(x, y);
     }else{
       /**
@@ -90,5 +102,6 @@ void setup() {
   endRecord();
   exit();// and nd the sketch
   }
+  saveFrame("screen.png");
 }
 
