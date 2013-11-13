@@ -2,7 +2,6 @@
  * @author Monika Hoinkis
  * edited for P2 by Fabian Moron Zirfas
  */
-ArrayList <String> gpxfiles;
 
 /**
  * create a bounding box world
@@ -52,7 +51,14 @@ float eastlon = 13.054676055908203; // the most right point
 
 
 
-
+/**
+ * This will hold all the names of the gpx files
+ * an ArrayList is like an Array but better. 
+ * Check out:
+ * http://processing.org/reference/ArrayList.html
+ * http://docs.oracle.com/javase/1.5.0/docs/api/java/util/ArrayList.html
+ */
+ArrayList <String> gpxfiles;
 
 
 void setup() {
@@ -63,7 +69,11 @@ void setup() {
    */
   size(1200, 600);
   background(255); // white bg
-  gpxfiles = new ArrayList<String>();
+  gpxfiles = new ArrayList<String>(); // Make new arraylist
+
+  /**
+   * Add all the filenames located in the data folder.
+   */
   gpxfiles.add("Nush.gpx");
   gpxfiles.add("20131013-18_04_14.gpx");
   gpxfiles.add("20131013-18_18_29.gpx");
@@ -75,11 +85,19 @@ void setup() {
 
 
 void draw() {
+  /**
+   * loop the list and draw all the files to the screen
+   */
   for (int i = 0;i < gpxfiles.size();i++) {
     drawgpxfile(gpxfiles.get(i));
   }
 }
 
+/**
+ * This funktion loads one .gpx file
+ * and draws it to the screen
+ * @argument {String} the Filename
+ */
 void drawgpxfile(String filename) {
 
   XML xml; // declare the xml element
@@ -88,15 +106,19 @@ void drawgpxfile(String filename) {
 
     XML trk = xml.getChild("trk"); // this is a track
 
+    // loop all the tracks in the file
   for (int j = 0; j < trk.getChildCount();j++) {
-    XML trkseg =  trk.getChild(j);
 
-    String trkseg_childname = trkseg.getName();
+    XML trkseg =  trk.getChild(j);// isolate one track
+
+    String trkseg_childname = trkseg.getName();// get the name
+
+    // check if there is a child called trkseg
     if (trkseg_childname.equals("trkseg")) {
-      println(trkseg_childname);
-      // strokeWeight(3);
+      
       noFill();
       beginShape();
+      // loop the track segment
       for (int i = 0; i < trkseg.getChildCount(); i++) {
         XML child = trkseg.getChild(i);// get every child of trkseg
         String name = child.getName();
@@ -118,12 +140,5 @@ void drawgpxfile(String filename) {
       endShape();
     }// close trkseg check
   }// close j
-
-
-  //  if(writepdf == true){
-  //  endRecord();
-  //  exit();// and nd the sketch
-  //  }
-  //  saveFrame("screen.png");
 }
 
