@@ -13,8 +13,8 @@ Boolean writepdf = false;
  * check out http://dbsgeo.com/latlon/
  * for getting geolocations
  */
-// float westlon = 180; // the most left point
 // float northlat = 90; // the most top point
+// float westlon = 180; // the most left point
 // float southlat = -90; // the most bottom point
 // float eastlon = -180; // the most right point
 
@@ -22,16 +22,16 @@ Boolean writepdf = false;
  * This is Berlin Potsdam boundng box
  *
  */
-// float westlon = 12.9638671875; // the most left point
 // float northlat = 52.70468296296834; // the most top point
+// float westlon = 12.9638671875; // the most left point
 // float southlat = 52.338695481504814; // the most bottom point
 // float eastlon = 13.8153076171875; // the most right point
 /**
  * This is Potsdam bounding box
  * 
  */
-// float westlon = 12.935028076171875; // the most left point
 // float northlat = 52.43299020014247; // the most top point
+// float westlon = 12.935028076171875; // the most left point
 // float southlat = 52.338695481504814; // the most bottom point
 // float eastlon = 13.16436767578125; // the most right point
 
