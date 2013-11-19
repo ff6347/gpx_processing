@@ -6,6 +6,7 @@ class BoundingBox{
 
   BoundingBox(){
     // empty constructor
+    // will be set to world
   }
   BoundingBox(float nlat, float wlon, float slat, float elon){
   this.northlat = nlat; // the most top point
